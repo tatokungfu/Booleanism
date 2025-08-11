@@ -34,3 +34,5 @@ export function IFF(p: boolean, q: boolean): boolean {
 
   return false;
 }
+
+export * from "./absurd";
