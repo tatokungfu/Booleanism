@@ -1,36 +1,34 @@
-import type { Proposition } from "../proposition";
-
-export function NOT(p: Proposition): boolean {
-  return !p.value;
+export function NOT(p: boolean): boolean {
+  return !p;
 }
 
 
-export function AND(p: Proposition, q: Proposition): boolean {
-  if(p.value === false || q.value === false) {
+export function AND(p: boolean, q: boolean): boolean {
+  if(p === false || q === false) {
     return false;
   }
 
   return true;
 };
 
-export function OR(p: Proposition, q: Proposition): boolean {
-  if(p.value === true || q.value === true) {
+export function OR(p: boolean, q: boolean): boolean {
+  if(p === true || q === true) {
     return true;
   }
 
   return false;
 }
 
-export function IMPLY(p: Proposition, q: Proposition): boolean {
-  if(p.value === true && q.value === false) {
+export function IMPLY(p: boolean, q: boolean): boolean {
+  if(p === true && q === false) {
     return false;
   }
 
   return true;
 }
 
-export function IFF(p: Proposition, q: Proposition): boolean {
-  if(p.value === q.value) {
+export function IFF(p: boolean, q: boolean): boolean {
+  if(p === q) {
     return true;
   }
 
