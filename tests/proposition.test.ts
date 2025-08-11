@@ -11,5 +11,5 @@ describe("proposition", () => {
   it("Sentence display right.", () => {
     expect(p.sentence).toBe("I love you.");
   });
-  
+
 });
