@@ -8,6 +8,11 @@ describe("Logic Test", () => {
   let r = new P(true, "This Sentence is Not False");
   let s = new P(false, "This Sentence is Not True");
 
+  it("~(~P) === P", () => {
+    expect(NOT(NOT(p.value))).toBe(p.value);
+    expect(NOT(NOT(q.value))).toBe(q.value);
+  });
+
   it("P v ~P === T", () => {
     expect(OR(p.value, NOT(p.value))).toBe(true);
     expect(OR(q.value, NOT(q.value))).toBe(true);
@@ -21,12 +26,37 @@ describe("Logic Test", () => {
   it("P ^ P === P", () => {
     expect(AND(p.value, p.value)).toBe(p.value);
     expect(AND(q.value, q.value)).toBe(q.value);
-  })
+  });
 
   it("P v P === P", () => {
     expect(OR(p.value, p.value)).toBe(p.value);
     expect(OR(q.value, q.value)).toBe(q.value);
-  })
+  });
+
+  it("P ^ F === F", () => {
+    expect(AND(p.value, false)).toBe(false);
+    expect(AND(q.value, false)).toBe(false);
+  });
+
+  it("P ^ T === P", () => {
+    expect(AND(p.value, true)).toBe(p.value);
+    expect(AND(q.value, true)).toBe(q.value)
+  });
+
+  it("P v T === T", () => {
+    expect(OR(p.value, true)).toBe(true);
+    expect(OR(q.value, true)).toBe(true);
+  });
+
+  it("P v F === P", () => {
+    expect(OR(p.value, false)).toBe(p.value);
+    expect(OR(q.value, false)).toBe(q.value);
+  });
+
+  it("(P -> Q) === (~Q -> ~P)", () => {
+    expect(IMPLY(p.value, q.value)).toBe(IMPLY(NOT(q.value), NOT(p.value)));
+    expect(IMPLY(q.value, p.value)).toBe(IMPLY(NOT(p.value), NOT(q.value)));
+  });
 
   it("(P -> Q) === (~P v Q)", () => {
     expect(IMPLY(p.value, q.value)).toBe(OR(NOT(p.value), q.value));

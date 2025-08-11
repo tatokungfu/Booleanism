@@ -2,7 +2,6 @@ import { describe, it, expect, test } from "bun:test";
 import { NOT, AND, OR, IMPLY, IFF } from "../utils/operators";
 
 describe("Logical Operation Test.", () => {
-
   it("AND Test", () => {
     expect(AND(true, true)).toBe(true);
     expect(AND(true, false)).toBe(false);
